@@ -27,6 +27,8 @@
 		B58C41532B585B0800FE3759 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C41522B585B0800FE3759 /* NetworkingProtocol.swift */; };
 		B58C41552B585B5500FE3759 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C41542B585B5500FE3759 /* Networking.swift */; };
 		B58C41582B585BD400FE3759 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C41572B585BD400FE3759 /* ConnectionManager.swift */; };
+		B58C415C2B586CF800FE3759 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C415B2B586CF800FE3759 /* OnboardingVC.swift */; };
+		B58C415F2B58771500FE3759 /* OnboardingBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C415E2B58771500FE3759 /* OnboardingBrandView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		B58C41522B585B0800FE3759 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		B58C41542B585B5500FE3759 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		B58C41572B585BD400FE3759 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		B58C415B2B586CF800FE3759 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		B58C415E2B58771500FE3759 /* OnboardingBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBrandView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		B57AAA3A2B569F4E005A42FF /* GithubRepoApp */ = {
 			isa = PBXGroup;
 			children = (
+				B58C41592B586CCE00FE3759 /* Controller */,
 				B58C41512B585AFC00FE3759 /* Networking */,
 				B58C41472B58576500FE3759 /* Helper */,
 				B57AAA3B2B569F4E005A42FF /* AppDelegate.swift */,
@@ -186,6 +191,31 @@
 				B58C41572B585BD400FE3759 /* ConnectionManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		B58C41592B586CCE00FE3759 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B58C415A2B586CEE00FE3759 /* Onboarding */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B58C415A2B586CEE00FE3759 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B58C415D2B5876BD00FE3759 /* Compenents */,
+				B58C415B2B586CF800FE3759 /* OnboardingVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B58C415D2B5876BD00FE3759 /* Compenents */ = {
+			isa = PBXGroup;
+			children = (
+				B58C415E2B58771500FE3759 /* OnboardingBrandView.swift */,
+			);
+			path = Compenents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,7 +365,9 @@
 				B58C414A2B5857B600FE3759 /* CustomHTTPHeader.swift in Sources */,
 				B58C41552B585B5500FE3759 /* Networking.swift in Sources */,
 				B58C414C2B58580600FE3759 /* EndpointConfiguration.swift in Sources */,
+				B58C415F2B58771500FE3759 /* OnboardingBrandView.swift in Sources */,
 				B58C41582B585BD400FE3759 /* ConnectionManager.swift in Sources */,
+				B58C415C2B586CF800FE3759 /* OnboardingVC.swift in Sources */,
 				B57AAA3C2B569F4E005A42FF /* AppDelegate.swift in Sources */,
 				B58C41532B585B0800FE3759 /* NetworkingProtocol.swift in Sources */,
 				B57AAA3E2B569F4E005A42FF /* SceneDelegate.swift in Sources */,
