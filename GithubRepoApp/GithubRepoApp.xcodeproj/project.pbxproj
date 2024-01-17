@@ -20,6 +20,10 @@
 		B57AAA702B56A0E3005A42FF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B57AAA6F2B56A0E3005A42FF /* Kingfisher */; };
 		B57AAA732B56A107005A42FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B57AAA722B56A107005A42FF /* SnapKit */; };
 		B57AAA752B56A107005A42FF /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B57AAA742B56A107005A42FF /* SnapKit-Dynamic */; };
+		B58C414A2B5857B600FE3759 /* CustomHTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C41492B5857B600FE3759 /* CustomHTTPHeader.swift */; };
+		B58C414C2B58580600FE3759 /* EndpointConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C414B2B58580600FE3759 /* EndpointConfiguration.swift */; };
+		B58C414E2B58584000FE3759 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C414D2B58584000FE3759 /* Constants.swift */; };
+		B58C41502B58591A00FE3759 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C414F2B58591A00FE3759 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		B57AAA582B569F50005A42FF /* GithubRepoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubRepoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57AAA5C2B569F50005A42FF /* GithubRepoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoAppUITests.swift; sourceTree = "<group>"; };
 		B57AAA5E2B569F50005A42FF /* GithubRepoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B58C41492B5857B600FE3759 /* CustomHTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHTTPHeader.swift; sourceTree = "<group>"; };
+		B58C414B2B58580600FE3759 /* EndpointConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConfiguration.swift; sourceTree = "<group>"; };
+		B58C414D2B58584000FE3759 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B58C414F2B58591A00FE3759 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 		B57AAA3A2B569F4E005A42FF /* GithubRepoApp */ = {
 			isa = PBXGroup;
 			children = (
+				B58C41472B58576500FE3759 /* Helper */,
 				B57AAA3B2B569F4E005A42FF /* AppDelegate.swift */,
 				B57AAA3D2B569F4E005A42FF /* SceneDelegate.swift */,
 				B57AAA3F2B569F4E005A42FF /* ViewController.swift */,
@@ -133,6 +142,25 @@
 				B57AAA5E2B569F50005A42FF /* GithubRepoAppUITestsLaunchTests.swift */,
 			);
 			path = GithubRepoAppUITests;
+			sourceTree = "<group>";
+		};
+		B58C41472B58576500FE3759 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B58C41482B58576A00FE3759 /* Enum */,
+				B58C414B2B58580600FE3759 /* EndpointConfiguration.swift */,
+				B58C414D2B58584000FE3759 /* Constants.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B58C41482B58576A00FE3759 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				B58C41492B5857B600FE3759 /* CustomHTTPHeader.swift */,
+				B58C414F2B58591A00FE3759 /* NetworkError.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,8 +306,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57AAA402B569F4E005A42FF /* ViewController.swift in Sources */,
+				B58C41502B58591A00FE3759 /* NetworkError.swift in Sources */,
+				B58C414A2B5857B600FE3759 /* CustomHTTPHeader.swift in Sources */,
+				B58C414C2B58580600FE3759 /* EndpointConfiguration.swift in Sources */,
 				B57AAA3C2B569F4E005A42FF /* AppDelegate.swift in Sources */,
 				B57AAA3E2B569F4E005A42FF /* SceneDelegate.swift in Sources */,
+				B58C414E2B58584000FE3759 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
