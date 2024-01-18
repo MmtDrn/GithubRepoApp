@@ -7,7 +7,12 @@
 
 import Foundation
 
-class UserManager {
+protocol UserManagerProtecol {
+    var isFirstLogin: Bool? { get set }
+    var favRepos: [String]? { get set }
+}
+
+class UserManager: UserManagerProtecol {
     static let shared = UserManager()
     private init() { }
     
@@ -16,7 +21,7 @@ class UserManager {
             return UserDefaultsManager.get(forKey: "isFirstLogin")
         }
         set {
-            UserDefaultsManager.userDefaults.set(newValue, forKey: "isFirstLogin")
+            UserDefaultsManager.set(newValue, forKey: "isFirstLogin")
         }
     }
     
