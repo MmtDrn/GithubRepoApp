@@ -68,6 +68,7 @@ Let's check out the excellent repos below!
         view.addSubview(algoFoundImageContainer)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        navigationItem.hidesBackButton = true
         
         configLayout()
     }
@@ -126,6 +127,12 @@ Let's check out the excellent repos below!
     }
     
     @objc private func skipAction() {
-        ///will push homePage
+        UserManager.shared.isFirstLogin = false
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate else {
+            return
+        }
+        sceneDelegate.window?.rootViewController = HomeVC()
     }
 }
