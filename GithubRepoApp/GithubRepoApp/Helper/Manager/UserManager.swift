@@ -30,7 +30,7 @@ class UserManager: UserManagerProtecol {
             return UserDefaultsManager.get(forKey: "favRepos")
         }
         set {
-            UserDefaultsManager.userDefaults.set(newValue, forKey: "favRepos")
+            UserDefaultsManager.set(newValue, forKey: "favRepos")
         }
     }
 }
