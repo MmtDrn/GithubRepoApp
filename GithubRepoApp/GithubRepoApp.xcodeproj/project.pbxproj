@@ -14,6 +14,7 @@
 		B500A92C2B59D6E70044E159 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500A92B2B59D6E70044E159 /* UIView+Ext.swift */; };
 		B500A92E2B59E5C50044E159 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500A92D2B59E5C50044E159 /* String+Ext.swift */; };
 		B500A9332B5A00A60044E159 /* SegmentedButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500A9322B5A00A60044E159 /* SegmentedButtonsView.swift */; };
+		B539A9182B5A88BC00D9BEBF /* HomeVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539A9172B5A88BC00D9BEBF /* HomeVCCell.swift */; };
 		B57AAA3C2B569F4E005A42FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57AAA3B2B569F4E005A42FF /* AppDelegate.swift */; };
 		B57AAA3E2B569F4E005A42FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57AAA3D2B569F4E005A42FF /* SceneDelegate.swift */; };
 		B57AAA402B569F4E005A42FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57AAA3F2B569F4E005A42FF /* ViewController.swift */; };
@@ -67,6 +68,7 @@
 		B500A92B2B59D6E70044E159 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		B500A92D2B59E5C50044E159 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		B500A9322B5A00A60044E159 /* SegmentedButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedButtonsView.swift; sourceTree = "<group>"; };
+		B539A9172B5A88BC00D9BEBF /* HomeVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCCell.swift; sourceTree = "<group>"; };
 		B57AAA382B569F4E005A42FF /* GithubRepoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57AAA3B2B569F4E005A42FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B57AAA3D2B569F4E005A42FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		B500A8FF2B589D5C0044E159 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B539A9162B5A88AC00D9BEBF /* Cell */,
 				B500A92F2B5A00620044E159 /* Compenents */,
 				B500A9002B589D690044E159 /* HomeVC.swift */,
 			);
@@ -149,6 +152,14 @@
 				B500A9322B5A00A60044E159 /* SegmentedButtonsView.swift */,
 			);
 			path = Compenents;
+			sourceTree = "<group>";
+		};
+		B539A9162B5A88AC00D9BEBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B539A9172B5A88BC00D9BEBF /* HomeVCCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B57AAA2F2B569F4E005A42FF = {
@@ -446,6 +457,7 @@
 				B500A9272B5993100044E159 /* RepoModel.swift in Sources */,
 				B58C41532B585B0800FE3759 /* NetworkingProtocol.swift in Sources */,
 				B500A92A2B59D6C40044E159 /* UIColor+Ext.swift in Sources */,
+				B539A9182B5A88BC00D9BEBF /* HomeVCCell.swift in Sources */,
 				B57AAA3E2B569F4E005A42FF /* SceneDelegate.swift in Sources */,
 				B58C414E2B58584000FE3759 /* Constants.swift in Sources */,
 			);
