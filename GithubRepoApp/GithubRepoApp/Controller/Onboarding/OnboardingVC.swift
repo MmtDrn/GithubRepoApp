@@ -133,6 +133,9 @@ Let's check out the excellent repos below!
             let sceneDelegate = windowScene.delegate as? SceneDelegate else {
             return
         }
-        sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: HomeVC())
+        sceneDelegate.window?.rootViewController = UINavigationController(rootViewController:
+                                                                            HomeVC(viewModel:
+                                                                                    HomeVM(networkService:
+                                                                                            Networking.shared)))
     }
 }

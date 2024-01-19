@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum Router: EndpointConfiguration {
+enum Router: EndpointConfiguration, CaseIterable {
     case algorand
     case perawallet
     case algorandfoundation
