@@ -31,7 +31,7 @@ class SplashVC: UIViewController {
                 let sceneDelegate = windowScene.delegate as? SceneDelegate else {
                 return
             }
-            sceneDelegate.window?.rootViewController = HomeVC()
+            sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: HomeVC())
         }
     }
 }
