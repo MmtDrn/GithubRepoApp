@@ -14,7 +14,7 @@ enum FilterCases {
     case algorandFoundatiton
     case allLaunguage
     case swift
-    case kotlin
+    case python
     case go
     case recentlyPushed
     case latestPushed

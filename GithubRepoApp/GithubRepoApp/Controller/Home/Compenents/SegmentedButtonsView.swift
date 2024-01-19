@@ -129,24 +129,28 @@ class SegmentedButtonsView: UIView {
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 50)
                 self?.delegate?.sendFiletCase(filterCase: .allBrand)
+                self?.reTitle1()
             },
             
             UIAction(title: "Pera Wallet") { [weak self] value in
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .peraWallet)
+                self?.reTitle1()
             },
             
             UIAction(title: "Algorand") {  [weak self] value in
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .algorand)
+                self?.reTitle1()
             },
             
             UIAction(title: "Algorand Foundatiton") { [weak self] value in
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 180)
                 self?.delegate?.sendFiletCase(filterCase: .algorandFoundatiton)
+                self?.reTitle1()
             }
         ])
         
@@ -159,24 +163,28 @@ class SegmentedButtonsView: UIView {
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .allLaunguage)
+                self?.reTitle2()
             },
             
             UIAction(title: "Swift") { [weak self] value in
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 160)
                 self?.delegate?.sendFiletCase(filterCase: .swift)
+                self?.reTitle2()
             },
             
-            UIAction(title: "Kotlin") { [weak self] value in
+            UIAction(title: "Python") { [weak self] value in
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 160)
-                self?.delegate?.sendFiletCase(filterCase: .kotlin)
+                self?.delegate?.sendFiletCase(filterCase: .python)
+                self?.reTitle2()
             },
             
             UIAction(title: "Go") { [weak self] value in
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .go)
+                self?.reTitle2()
             }
         ])
         return menuItems
@@ -188,24 +196,28 @@ class SegmentedButtonsView: UIView {
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 180)
                 self?.delegate?.sendFiletCase(filterCase: .recentlyPushed)
+                self?.reTitle3()
             },
             
             UIAction(title: "Latest pushed") { [weak self] value in
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 170)
                 self?.delegate?.sendFiletCase(filterCase: .latestPushed)
+                self?.reTitle3()
             },
             
             UIAction(title: "Newest") {  [weak self] value in
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .newest)
+                self?.reTitle3()
             },
             
             UIAction(title: "Oldest") { [weak self] value in
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 120)
                 self?.delegate?.sendFiletCase(filterCase: .oldest)
+                self?.reTitle3()
             }
         ])
         return menuItems
@@ -216,5 +228,26 @@ class SegmentedButtonsView: UIView {
         button.snp.updateConstraints { make in
             make.width.equalTo(value)
         }
+    }
+    
+    private func reTitle1() {
+        languageButton.setTitle("Language: All", for: .normal)
+        sortButton.setTitle("Sort: Recently pushed", for: .normal)
+        updateButtonWidth(languageButton, value: 120)
+        updateButtonWidth(sortButton, value: 180)
+    }
+    
+    private func reTitle2() {
+        brandButton.setTitle("All", for: .normal)
+        sortButton.setTitle("Sort: Recently pushed", for: .normal)
+        updateButtonWidth(brandButton, value: 60)
+        updateButtonWidth(sortButton, value: 180)
+    }
+    
+    private func reTitle3() {
+        brandButton.setTitle("All", for: .normal)
+        languageButton.setTitle("Language: All", for: .normal)
+        updateButtonWidth(brandButton, value: 60)
+        updateButtonWidth(languageButton, value: 120)
     }
 }

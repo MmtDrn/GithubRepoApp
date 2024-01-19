@@ -70,7 +70,7 @@ class HomeVC: UIViewController {
 // MARK: - Filter logics
 extension HomeVC: FilterProtocol {
     func sendFiletCase(filterCase: FilterCases) {
-        print(filterCase)
+        viewModel.filtreList(filterCase)
     }
 }
 
@@ -89,12 +89,12 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.repos.count
+        return viewModel.filteredList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeVCCell.self), for: indexPath) as! HomeVCCell
-        let repo = viewModel.repos[indexPath.row]
+        let repo = viewModel.filteredList[indexPath.row]
         
         cell.configureViews(model: repo)
         
