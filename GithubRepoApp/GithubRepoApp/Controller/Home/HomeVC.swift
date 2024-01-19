@@ -31,6 +31,7 @@ class HomeVC: UIViewController {
     init(viewModel: HomeVM) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +46,7 @@ class HomeVC: UIViewController {
         navigationItem.title = "Repositories"
         
         setupViews()
+        viewModel.getReposData()
     }
     
     private func setupViews() {
@@ -64,6 +66,13 @@ class HomeVC: UIViewController {
     }
 }
 
+// MARK: - ViewModel subscribe logics
+extension HomeVC: HomeVMBinding {
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
 // MARK: - Tableview methods
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     
@@ -72,13 +81,19 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.repos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeVCCell.self), for: indexPath) as! HomeVCCell
+        let repo = viewModel.repos[indexPath.row]
+        
+        cell.configureViews(model: repo)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -91,4 +91,11 @@ class HomeVCCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configureViews(model: RepoModel) {
+        nameLabel.text = model.name
+        descriptionLabel.text = model.description
+        starCountLabel.text = "⭐️ \(model.stargazers_count ?? 0)"
+        languageLabel.text = "🔴 \(model.language ?? "unkown language")"
+    }
 }

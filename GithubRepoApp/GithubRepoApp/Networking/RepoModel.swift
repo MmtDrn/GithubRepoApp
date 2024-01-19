@@ -23,6 +23,7 @@ struct RepoModel: Codable {
     var stargazers_count: Int?
     var watchers_count: Int?
     var forks_count: Int?
+    var language: String?
 }
 
 struct Owner: Codable {
