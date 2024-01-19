@@ -13,6 +13,9 @@ class HomeVC: UIViewController {
     
     private lazy var segmentedButtonsView: SegmentedButtonsView = {
         let view = SegmentedButtonsView()
+        
+        view.delegate = self
+        
         return view
     }()
     
@@ -20,8 +23,6 @@ class HomeVC: UIViewController {
         let tableView = UITableView()
         
         tableView.register(HomeVCCell.self, forCellReuseIdentifier: String(describing: HomeVCCell.self))
-        tableView.showsVerticalScrollIndicator = false
-        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -63,6 +64,13 @@ class HomeVC: UIViewController {
             make.top.equalTo(segmentedButtonsView.snp.bottom).offset(10)
             make.leading.bottom.trailing.equalToSuperview()
         }
+    }
+}
+
+// MARK: - Filter logics
+extension HomeVC: FilterProtocol {
+    func sendFiletCase(filterCase: FilterCases) {
+        print(filterCase)
     }
 }
 

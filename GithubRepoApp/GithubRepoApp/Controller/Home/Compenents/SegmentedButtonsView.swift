@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol FilterProtocol: AnyObject {
+    func sendFiletCase(filterCase: FilterCases)
+}
+
 class SegmentedButtonsView: UIView {
+    
+    weak var delegate: FilterProtocol?
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -120,27 +126,27 @@ class SegmentedButtonsView: UIView {
     private func brandMenuItems() -> UIMenu {
         let menuItems = UIMenu(options: .displayInline, children: [
             UIAction(title: "All") { [weak self] value in
-                print(value.title)
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 50)
+                self?.delegate?.sendFiletCase(filterCase: .allBrand)
             },
             
             UIAction(title: "Pera Wallet") { [weak self] value in
-                print(value.title)
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .peraWallet)
             },
             
             UIAction(title: "Algorand") {  [weak self] value in
-                print(value.title)
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .algorand)
             },
             
             UIAction(title: "Algorand Foundatiton") { [weak self] value in
-                print(value.title)
                 self?.brandButton.setTitle(value.title, for: .normal)
                 self?.updateButtonWidth(self?.brandButton, value: 180)
+                self?.delegate?.sendFiletCase(filterCase: .algorandFoundatiton)
             }
         ])
         
@@ -150,27 +156,27 @@ class SegmentedButtonsView: UIView {
     private func languageMenuItems() -> UIMenu {
         let menuItems = UIMenu(options: .displayInline, children: [
             UIAction(title: "All") { [weak self] value in
-                print(value.title)
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .allLaunguage)
             },
             
             UIAction(title: "Swift") { [weak self] value in
-                print(value.title)
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 160)
+                self?.delegate?.sendFiletCase(filterCase: .swift)
             },
             
             UIAction(title: "Kotlin") { [weak self] value in
-                print(value.title)
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 160)
+                self?.delegate?.sendFiletCase(filterCase: .kotlin)
             },
             
             UIAction(title: "Go") { [weak self] value in
-                print(value.title)
                 self?.languageButton.setTitle("Language: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.languageButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .go)
             }
         ])
         return menuItems
@@ -179,27 +185,27 @@ class SegmentedButtonsView: UIView {
     private func sortMenuItems() -> UIMenu {
         let menuItems = UIMenu(options: .displayInline, children: [
             UIAction(title: "Recently pushed") { [weak self] value in
-                print(value.title)
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 180)
+                self?.delegate?.sendFiletCase(filterCase: .recentlyPushed)
             },
             
             UIAction(title: "Latest pushed") { [weak self] value in
-                print(value.title)
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 170)
+                self?.delegate?.sendFiletCase(filterCase: .latestPushed)
             },
             
             UIAction(title: "Newest") {  [weak self] value in
-                print(value.title)
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .newest)
             },
             
             UIAction(title: "Oldest") { [weak self] value in
-                print(value.title)
                 self?.sortButton.setTitle("Sort: \(value.title)", for: .normal)
                 self?.updateButtonWidth(self?.sortButton, value: 120)
+                self?.delegate?.sendFiletCase(filterCase: .oldest)
             }
         ])
         return menuItems

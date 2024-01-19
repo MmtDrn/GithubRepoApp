@@ -13,6 +13,7 @@ protocol HomeVMBinding: AnyObject {
 
 class HomeVM {
     private var networkService: NetworkingProtocol
+    
     weak var delegate: HomeVMBinding?
     var repos = [RepoModel]()
     
