@@ -107,7 +107,7 @@ extension HomeVC: UISearchBarDelegate {
 // MARK: - Filter logics
 extension HomeVC: FilterProtocol {
     func sendFiletCase(filterCase: FilterCases) {
-        viewModel.filtreList(filterCase)
+        viewModel.filterList(filterCase)
     }
 }
 

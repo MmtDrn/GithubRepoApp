@@ -17,6 +17,12 @@ class HomeVM {
     
     var pureList = [RepoModel]()
     var filteredList = [RepoModel]()
+    private var filters = [FilterCases]()
+    
+    private var brands: [FilterCases] = [.algorand, .peraWallet, .algorandFoundatiton, .allBrand]
+    private var languages: [FilterCases] = [.swift, .python, .go, .allLaunguage]
+    private var dateParams: [FilterCases] = [.recentlyPushed, .latestPushed, .newest, .oldest]
+    
         
     init(networkService: NetworkingProtocol) {
         self.networkService = networkService
@@ -33,55 +39,97 @@ class HomeVM {
         }
     }
     
-    func filtreList(_ filterCase: FilterCases) {
-        #warning("filter methods will update")
+    func filterList(_ filterCase: FilterCases) {
+        updatedFilters(filterCase)
+        
+        for index in 0..<filters.count {
+            if index == 0 {
+                filteredList = filtersLogic(filterCase: filters[index], repoList: pureList)
+            } else {
+                filteredList = filtersLogic(filterCase: filters[index], repoList: filteredList)
+            }
+        }
+        
+        delegate?.reloadTableView()
+    }
+    
+    private func updatedFilters(_ filterCase: FilterCases) {
+        if brands.contains(filterCase) {
+            if filterCase == .allBrand {
+                removeFilters(for: brands)
+            } else {
+                removeFilters(for: brands)
+                filters.append(filterCase)
+            }
+        } else if languages.contains(filterCase) {
+            if filterCase == .allLaunguage {
+                removeFilters(for: languages)
+            } else {
+                removeFilters(for: languages)
+                filters.append(filterCase)
+            }
+        } else if dateParams.contains(filterCase) {
+            removeFilters(for: dateParams)
+            filters.append(filterCase)
+        }
+    }
+    
+    private func removeFilters(for filterList: [FilterCases]) {
+        filterList.forEach { filter in
+            if filters.contains(filter), let index = filters.firstIndex(of: filter) {
+                filters.remove(at: index)
+            }
+        }
+    }
+    
+    private func filtersLogic(filterCase: FilterCases, repoList: [RepoModel]) -> [RepoModel] {
+        var newRepoList = [RepoModel]()
+        
         switch filterCase {
-        case .allBrand:
-            filteredList = pureList
         case .peraWallet:
-            filteredList = pureList.filter{ $0.owner?.login == "perawallet" }
+            newRepoList = repoList.filter{ $0.owner?.login == "perawallet" }
         case .algorand:
-            filteredList = pureList.filter{ $0.owner?.login == "algorand" }
+            newRepoList = repoList.filter{ $0.owner?.login == "algorand" }
         case .algorandFoundatiton:
-            filteredList = pureList.filter{ $0.owner?.login == "algorandfoundation" }
-        case .allLaunguage:
-            filteredList = pureList
+            newRepoList = repoList.filter{ $0.owner?.login == "algorandfoundation" }
         case .swift:
-            filteredList = pureList.filter{ $0.language?.capitalized == "Swift".capitalized }
+            newRepoList = repoList.filter{ $0.language?.capitalized == "Swift".capitalized }
         case .python:
-            filteredList = pureList.filter{ $0.language?.capitalized == "Python".capitalized }
+            newRepoList = repoList.filter{ $0.language?.capitalized == "Python".capitalized }
         case .go:
-            filteredList = pureList.filter{ $0.language?.capitalized == "Go".capitalized }
+            newRepoList = repoList.filter{ $0.language?.capitalized == "Go".capitalized }
         case .recentlyPushed:
-            filteredList = pureList.sorted {
+            newRepoList = repoList.sorted {
                 guard let date1 = $0.pushed_at?.toDate(),
                       let date2 = $1.pushed_at?.toDate() else { return false }
                 
                 return date1 > date2
             }
         case .latestPushed:
-            filteredList = pureList.sorted {
+            newRepoList = repoList.sorted {
                 guard let date1 = $0.pushed_at?.toDate(),
                       let date2 = $1.pushed_at?.toDate() else { return false }
                 
                 return date1 < date2
             }
         case .newest:
-            filteredList = pureList.sorted {
+            newRepoList = repoList.sorted {
                 guard let date1 = $0.created_at?.toDate(),
                       let date2 = $1.created_at?.toDate() else { return false }
                 
                 return date1 > date2
             }
         case .oldest:
-            filteredList = pureList.sorted {
+            newRepoList = repoList.sorted {
                 guard let date1 = $0.created_at?.toDate(),
                       let date2 = $1.created_at?.toDate() else { return false }
                 
                 return date1 < date2
             }
+        default: break
         }
-        delegate?.reloadTableView()
+        
+        return newRepoList
     }
     
     func filterBySearchBar(_ text: String) {
