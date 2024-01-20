@@ -24,6 +24,7 @@ struct RepoModel: Codable {
     var watchers_count: Int?
     var forks_count: Int?
     var language: String?
+    var svn_url: String?
 }
 
 struct Owner: Codable {

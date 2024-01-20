@@ -60,8 +60,6 @@ class HomeVC: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(searchButtonTapped))
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGesture)
         
         setupViews()
         viewModel.getReposData()
@@ -87,12 +85,6 @@ class HomeVC: UIViewController {
         segmentedButtonsView.reConfigureButtons()
         searchBar.isHidden = false
         searchBar.becomeFirstResponder()
-    }
-    @objc func handleTap() {
-        searchBar.resignFirstResponder()
-        searchBar.isHidden = true
-        searchBar.text = ""
-        viewModel.resetList()
     }
 }
 
@@ -138,6 +130,10 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        guard let repoURL = viewModel.filteredList[indexPath.row].svn_url else { return }
+        let webViewVC = WebViewVC(urlString: repoURL)
+        navigationController?.pushViewController(webViewVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
