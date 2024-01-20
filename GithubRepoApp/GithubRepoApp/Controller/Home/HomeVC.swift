@@ -17,6 +17,7 @@ class HomeVC: UIViewController {
         searchBar.placeholder = "Search"
         searchBar.isHidden = true
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
         
         return searchBar
     }()
@@ -92,6 +93,14 @@ class HomeVC: UIViewController {
 extension HomeVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.filterBySearchBar(searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.isHidden = true
+        searchBar.text = ""
+        viewModel.resetList()
+
     }
 }
 
