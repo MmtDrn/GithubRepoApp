@@ -39,8 +39,12 @@ class HomeVM {
             }
         }
     }
+}
+
+// MARK: - FILTER FUNCS
+extension HomeVM {
     
-    func filterList(_ filterCase: FilterCases) {
+    func filterList(_ filterCase: FilterCases) { //: Main filter func
         updatedFilters(filterCase)
         
         for index in 0..<filters.count {
@@ -56,7 +60,7 @@ class HomeVM {
         delegate?.reloadTableView()
     }
     
-    private func updatedFilters(_ filterCase: FilterCases) {
+    private func updatedFilters(_ filterCase: FilterCases) { //: Updating filter params func
         if brands.contains(filterCase) {
             if filterCase == .allBrand {
                 removeFilters(for: brands)
@@ -77,7 +81,7 @@ class HomeVM {
         }
     }
     
-    private func removeFilters(for filterList: [FilterCases]) {
+    private func removeFilters(for filterList: [FilterCases]) { //: helper to updated filter params func
         filterList.forEach { filter in
             if filters.contains(filter), let index = filters.firstIndex(of: filter) {
                 filters.remove(at: index)
@@ -85,7 +89,7 @@ class HomeVM {
         }
     }
     
-    private func filtersLogic(filterCase: FilterCases, repoList: [RepoModel]) -> [RepoModel] {
+    private func filtersLogic(filterCase: FilterCases, repoList: [RepoModel]) -> [RepoModel] { //: Filter list func
         var newRepoList = [RepoModel]()
         
         switch filterCase {
@@ -135,7 +139,7 @@ class HomeVM {
         return newRepoList
     }
     
-    func filterBySearchBar(_ text: String) {
+    func filterBySearchBar(_ text: String) { //: Search bar filter func
         if !text.isEmpty {
             filteredList = pureFilteredList.filter { $0.name!.lowercased().contains(text.lowercased()) }
             delegate?.reloadTableView()
@@ -145,7 +149,7 @@ class HomeVM {
         }
     }
     
-    func resetList() {
+    func resetList() { //: For search bar cancel button
         filteredList = pureFilteredList
         delegate?.reloadTableView()
     }
