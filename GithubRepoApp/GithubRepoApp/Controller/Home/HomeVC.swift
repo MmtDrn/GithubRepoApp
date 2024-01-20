@@ -11,6 +11,16 @@ class HomeVC: UIViewController {
     
     private var viewModel: HomeVM
     
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        
+        searchBar.placeholder = "Search"
+        searchBar.isHidden = true
+        searchBar.delegate = self
+        
+        return searchBar
+    }()
+    
     private lazy var segmentedButtonsView: SegmentedButtonsView = {
         let view = SegmentedButtonsView()
         
@@ -43,8 +53,15 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "Repositories"
+        navigationItem.titleView = searchBar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(searchButtonTapped))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
         
         setupViews()
         viewModel.getReposData()
@@ -64,6 +81,25 @@ class HomeVC: UIViewController {
             make.top.equalTo(segmentedButtonsView.snp.bottom).offset(10)
             make.leading.bottom.trailing.equalToSuperview()
         }
+    }
+    
+    @objc func searchButtonTapped() {
+        segmentedButtonsView.reConfigureButtons()
+        searchBar.isHidden = false
+        searchBar.becomeFirstResponder()
+    }
+    @objc func handleTap() {
+        searchBar.resignFirstResponder()
+        searchBar.isHidden = true
+        searchBar.text = ""
+        viewModel.resetList()
+    }
+}
+
+// MARK: - Searchbar delegate
+extension HomeVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filterBySearchBar(searchText)
     }
 }
 

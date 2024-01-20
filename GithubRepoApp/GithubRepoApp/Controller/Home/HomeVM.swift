@@ -83,4 +83,18 @@ class HomeVM {
         }
         delegate?.reloadTableView()
     }
+    
+    func filterBySearchBar(_ text: String) {
+        if !text.isEmpty {
+            filteredList = pureList.filter { $0.name!.lowercased().contains(text.lowercased()) }
+            delegate?.reloadTableView()
+        } else {
+            resetList()
+        }
+    }
+    
+    func resetList() {
+        filteredList = pureList
+        delegate?.reloadTableView()
+    }
 }
