@@ -18,6 +18,7 @@ class HomeVM {
     var pureList = [RepoModel]()
     var filteredList = [RepoModel]()
     private var filters = [FilterCases]()
+    private var pureFilteredList = [RepoModel]()
     
     private var brands: [FilterCases] = [.algorand, .peraWallet, .algorandFoundatiton, .allBrand]
     private var languages: [FilterCases] = [.swift, .python, .go, .allLaunguage]
@@ -45,8 +46,10 @@ class HomeVM {
         for index in 0..<filters.count {
             if index == 0 {
                 filteredList = filtersLogic(filterCase: filters[index], repoList: pureList)
+                pureFilteredList = filteredList
             } else {
                 filteredList = filtersLogic(filterCase: filters[index], repoList: filteredList)
+                pureFilteredList = filteredList
             }
         }
         
@@ -134,15 +137,16 @@ class HomeVM {
     
     func filterBySearchBar(_ text: String) {
         if !text.isEmpty {
-            filteredList = pureList.filter { $0.name!.lowercased().contains(text.lowercased()) }
+            filteredList = pureFilteredList.filter { $0.name!.lowercased().contains(text.lowercased()) }
             delegate?.reloadTableView()
         } else {
-            resetList()
+            filteredList = pureFilteredList
+            delegate?.reloadTableView()
         }
     }
     
     func resetList() {
-        filteredList = pureList
+        filteredList = pureFilteredList
         delegate?.reloadTableView()
     }
 }

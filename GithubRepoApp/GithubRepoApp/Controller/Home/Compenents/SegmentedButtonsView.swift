@@ -217,14 +217,4 @@ class SegmentedButtonsView: UIView {
             make.width.equalTo(value)
         }
     }
-    
-    func reConfigureButtons() {
-        brandButton.setTitle("All", for: .normal)
-        languageButton.setTitle("Language: All", for: .normal)
-        sortButton.setTitle("Sort: Recently pushed", for: .normal)
-        
-        updateButtonWidth(brandButton, value: 60)
-        updateButtonWidth(languageButton, value: 120)
-        updateButtonWidth(sortButton, value: 180)
-    }
 }

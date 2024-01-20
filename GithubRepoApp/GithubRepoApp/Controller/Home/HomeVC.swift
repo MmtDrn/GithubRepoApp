@@ -83,7 +83,6 @@ class HomeVC: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-        segmentedButtonsView.reConfigureButtons()
         searchBar.isHidden = false
         searchBar.becomeFirstResponder()
     }
