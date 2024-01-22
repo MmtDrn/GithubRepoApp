@@ -30,14 +30,31 @@ class HomeVM {
     }
     
     func getReposData() {
-        for router in Router.allCases {
-            networkService.request(router: router) { [weak self] (repo: [RepoModel]?, error) in
-                guard let self, let repo else { return }
-                self.pureList += repo
-                self.filteredList += repo
+        let dispatchGroup = DispatchGroup()
+
+            for router in Router.allCases {
+                dispatchGroup.enter()
+
+                networkService.request(router: router) { [weak self] (repo: [RepoModel]?, error) in
+                    defer {
+                        dispatchGroup.leave()
+                    }
+
+                    guard let self, let repo = repo else { return }
+                    self.pureList += repo
+                    self.filteredList += repo
+                }
+            }
+
+            dispatchGroup.notify(queue: .main) {
+                self.filteredList = self.filteredList.sorted {
+                    guard let date1 = $0.pushed_at?.toDate(),
+                          let date2 = $1.pushed_at?.toDate() else { return false }
+                    
+                    return date1 > date2
+                }
                 self.delegate?.reloadTableView()
             }
-        }
     }
 }
 
