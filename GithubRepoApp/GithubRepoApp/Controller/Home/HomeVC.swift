@@ -40,6 +40,19 @@ class HomeVC: UIViewController {
         return tableView
     }()
     
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        
+        label.font = .systemFont(ofSize: 26, weight: .bold)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "No data was found for the criteria you requested."
+        label.isHidden = true
+        
+        return label
+    }()
+    
     init(viewModel: HomeVM) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,6 +82,7 @@ class HomeVC: UIViewController {
     private func setupViews() {
         view.addSubview(segmentedButtonsView)
         view.addSubview(tableView)
+        view.addSubview(noDataLabel)
         
         segmentedButtonsView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
@@ -79,6 +93,11 @@ class HomeVC: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(segmentedButtonsView.snp.bottom).offset(10)
             make.leading.bottom.trailing.equalToSuperview()
+        }
+        
+        noDataLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.center.equalToSuperview()
         }
     }
     
@@ -114,6 +133,7 @@ extension HomeVC: FilterProtocol {
 extension HomeVC: HomeVMBinding {
     func reloadTableView() {
         tableView.reloadData()
+        noDataLabel.isHidden = !viewModel.filteredList.isEmpty
     }
 }
 
